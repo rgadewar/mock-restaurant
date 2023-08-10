@@ -1,8 +1,13 @@
 const router = require('express').Router();
-const userRoutes = require('./userRoutes');
-const projectRoutes = require('./projectRoutes');
+// const isAuthenticated = require("../../utils/middleware/isAuthenticated");
+// Import the routes for posts, comments, and users
 
-router.use('/users', userRoutes);
-router.use('/projects', projectRoutes);
+const userRoutes = require('./userRoutes');
+
+// router.use('/', isAuthenticated, homeRoutes);
+
+router.use('/', userRoutes);
+
+
 
 module.exports = router;

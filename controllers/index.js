@@ -1,6 +1,15 @@
-const express = require('express');
-const router = express.Router();
+// routes/index.js
+const router = require('express').Router();
+const apiRoutes = require('./api');
 
-// Define your routes using router.get(), router.post(), etc.
+
+
+router.use('/', apiRoutes);
+
+router.use((req, res) => {
+    res.status(404).end();
+});
+
+
 
 module.exports = router;
