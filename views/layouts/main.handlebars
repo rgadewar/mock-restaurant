@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOCK RESTAURANT</title>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="hero">
+      <h1 class="app-title"><i class="fab"></i>MOCK RESTAURANT</h1>
+      <div>
+        <nav class="nav">
+  {{#if loggedIn}}
+  <a class="nav-item nav-link" href="/">MENU</a>
+  <a class="nav-item nav-link" href="/vendor">CART</a>
+  <a class="nav-item nav-link" href="/category">Login</a>
+  <a href="/api/logout" id="logout">Logout</a>
+  {{/if}}
+</nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Include the login page template here -->
+      {{{body}}}
+    </main>
+  </div>
+  {{#if req.session.loggedIn}}
+    <script src="/assets/js/logout.js"></script>
+  {{/if}}
+    
+</body>
+
+</html>

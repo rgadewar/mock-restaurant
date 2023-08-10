@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "mock_restuarant",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}

@@ -10,7 +10,7 @@ const moment = require("moment");
 // const sequelize = db.sequelize;
 const sequelize = require('./config/connection');
 require('dotenv').config();
-const seedDatabase = require('./seeds/seed'); // Import the seed function
+// const seedDatabase = require('./seeds/seed'); // Import the seed function
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -65,3 +65,13 @@ sequelize.sync({ force: false }).then(async () => {
     );
   });
 });
+// Sync the database and start the server
+// try {
+//   await sequelize.sync();
+//   console.log('Database synchronized successfully');
+//   app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+//   });
+// } catch (error) {
+//   console.error('Error synchronizing database:', error);
+// }
