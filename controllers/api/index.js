@@ -3,11 +3,11 @@ const router = require('express').Router();
 // Import the routes for posts, comments, and users
 
 const userRoutes = require('./userRoutes');
+const productRoutes = require('./productRoutes');
+
+router.use('/users', userRoutes);
+router.use('/products', productRoutes);
 
 // router.use('/', isAuthenticated, homeRoutes);
-
-router.use('/', userRoutes);
-
-
 
 module.exports = router;
