@@ -2,12 +2,14 @@ const router = require('express').Router();
 const { User } = require('../../models');
 // const passport = require("../../config/passport");
 const bcrypt = require('bcrypt');
+
 const ensureAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/login'); // Redirect to the login page if not authenticated
 };
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
       res.redirect('/dashboard');
@@ -15,9 +17,8 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
   });
+
 // Route for user login
-const bcrypt = require('bcrypt');
-const { User } = require('../../models');
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
