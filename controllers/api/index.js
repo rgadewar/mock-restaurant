@@ -8,6 +8,4 @@ const productRoutes = require('./productRoutes');
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
 
-// router.use('/', isAuthenticated, homeRoutes);
-
 module.exports = router;
