@@ -11,10 +11,10 @@ const ensureAuthenticated = (req, res, next) => {
 };
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-      res.redirect('/dashboard');
-      return;
-  }
+  // if (req.session.loggedIn) {
+  //     res.redirect('/dashboard');
+  //     return;
+  // }
   res.render('login');
   });
 
