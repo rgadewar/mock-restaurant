@@ -1,14 +1,18 @@
 <div class="card">
     <h3 class="card-header">Sign-Up</h3>
     <form id="signup-form" class="card-body">
-        <label for="email-signup" class="form-label">Email</label>
-        <input id="email-signup" type="email" class="form-input"/>
+        <div class="mb-3">
+            <label for="email-signup" class="form-label">Email</label>
+            <input id="email-signup" type="email" class="form-control" placeholder="Enter your email"/>
+        </div>
 
-        <label class="form-label" for="password-signup">Password</label>
-        <input id="password-signup" type="password" class="form-input"/>
+        <div class="mb-3">
+            <label for="password-signup" class="form-label">Password</label>
+            <input id="password-signup" type="password" class="form-control" placeholder="Enter your password"/>
+        </div>
 
-        <button type="submit" class="btn">Sign-Up</button>
-        <a class="login-link" href="/login">Already a user? Login Here</a>
+        <button type="submit" class="btn btn-primary">Sign-Up</button>
+        <p class="mt-3">Already a user? <a class="login-link" href="/">Login Here</a></p>
     </form>
 </div>
 <script src="/js/signup.js"></script>

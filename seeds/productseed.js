@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { Product } = require('../models'); // Make sure the path is correct to import the Product model
+const { Product, CartItem } = require('../models'); // Import both models // Make sure the path is correct to import the Product model
 
 const seedProducts = async () => {
   await sequelize.sync({ force: true }); // Drop and recreate tables

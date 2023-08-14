@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const responseData = await response.json();
           displayMessage(responseData.message, 'success-message');
           setTimeout(() => {
-            window.location.href = '/users/login';
+            window.location.href = '/login';
           }, 3000); // Redirect after 3 seconds (adjust the delay as needed)
         } else {
           const responseData = await response.json();
