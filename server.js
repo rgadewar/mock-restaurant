@@ -47,6 +47,7 @@ app.use(passport.session());
 
 // Use the indexRouter for handling routes
 const routes = require('./controllers');
+console.log(routes)
 app.use(routes);
 
 
@@ -65,13 +66,3 @@ sequelize.sync({ force: false }).then(async () => {
     );
   });
 });
-// Sync the database and start the server
-// try {
-//   await sequelize.sync();
-//   console.log('Database synchronized successfully');
-//   app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-//   });
-// } catch (error) {
-//   console.error('Error synchronizing database:', error);
-// }

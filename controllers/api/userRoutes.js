@@ -10,13 +10,7 @@ const ensureAuthenticated = (req, res, next) => {
   res.redirect('/login'); // Redirect to the login page if not authenticated
 };
 
-router.get('/login', (req, res) => {
-  // if (req.session.loggedIn) {
-  //     res.redirect('/dashboard');
-  //     return;
-  // }
-  res.render('login');
-  });
+
 
 // Route for user login
 router.post("/login", async (req, res) => {
@@ -42,10 +36,7 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-// GET route to render the signup page
-router.get('/signup', (req, res) => {
-  res.render('signup'); // Replace 'signup' with the actual template name
-});
+
 router.post('/signup', async (req, res) => {
   try {
     // Check if a user with the same email already exists in the database
@@ -92,10 +83,7 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch user' });
   }
 });
-// Inside your router configuration
-router.get('/menu', ensureAuthenticated, (req, res) => {
-  res.render('menu'); // Render the 'home.handlebars' template
-});
+
 module.exports = router;
 
 

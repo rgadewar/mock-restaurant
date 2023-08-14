@@ -10,11 +10,11 @@ const seedUsers = async () => {
 
   await User.bulkCreate([
     {
-      username: 'user1',
+      email: 'user1',
       password: hashedPassword1,
     },
     {
-      username: 'user2',
+      email: 'user2',
       password: hashedPassword2,
     },
     // Add more users as needed

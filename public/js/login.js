@@ -18,8 +18,8 @@ async function loginFormHandler(event) {
   
       if (response.ok) {
         // Handle successful login, e.g., redirect
-        // document.location.replace('/dashboard');
-        alert('Login successful');
+        document.location.replace('/menu');
+        // alert('Login successful');
       } else {
         alert(response.statusText);
       }

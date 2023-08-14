@@ -1,2 +1,2 @@
-DROP DATABASE mock_restuarant;
-CREATE DATABASE mock_restuarant;
+-- DROP DATABASE mock_restuarant_old;
+CREATE DATABASE mock_restuarant_old;
