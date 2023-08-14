@@ -1,1 +1,13 @@
-<h1>Welcome to Mock Restaurant Menu</h1>
+<div class="product-list">
+  <h2>Menu</h2>
+  <div class="row">
+    {{#each products}}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="/product/{{ id }}"> <!-- Link to the product details page -->
+          {{> product-item}}
+        </a>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<script src="/js/menu.js"></script>

@@ -1,0 +1,34 @@
+{{!-- Inherit the main layout --}}
+{{> main-layout}}
+
+{{!-- Define the body content --}}
+{{#content "body"}}
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2>Product Added to Cart</h2>
+      </div>
+      <div class="card-body">
+        <h3>{{ product.product_name }}</h3>
+        <p>Price: {{ product.price }}</p>
+        <p>Stock: {{ product.stock }}</p>
+        <p>Quantity: {{ quantity }}</p>
+        <p>Successfully added to cart!</p>
+        <button class="btn btn-secondary" onclick="continueShopping()">Continue Shopping</button>
+        <button class="btn btn-info" onclick="goToCart()">Go to Cart</button>
+      </div>
+    </div>
+  </div>
+{{/content}
+{{!-- Include custom JavaScript for the success page --}}
+{{#content "scripts"}}
+  <script>
+    function continueShopping() {
+      window.location.href = "/"; // Redirect to the menu page
+    }
+
+    function goToCart() {
+      window.location.href = "/cart"; // Redirect to the cart page
+    }
+  </script>
+{{/content}}

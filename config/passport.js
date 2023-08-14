@@ -7,17 +7,17 @@ const bcrypt = require('bcrypt');
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "username", // Corrected to "username"
+      usernameField: "email", // Corrected to "email"
     },
-    (username, password, done) => {
+    (email, password, done) => {
       db.User.findOne({
         where: {
-          username: username, // Corrected to "username"
+          email: email, // Corrected to "email"
         },
       }).then((dbUser) => {
         if (!dbUser) {
           return done(null, false, {
-            message: "Incorrect username.",
+            message: "Incorrect email.",
           });
         } else if (!dbUser.validPassword(password)) {
           return done(null, false, {

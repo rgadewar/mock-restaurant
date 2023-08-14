@@ -6,8 +6,6 @@ const passport = require("./config/passport");
 const path = require("path");
 const moment = require("moment");
 
-// const db = require('./models/index');
-// const sequelize = db.sequelize;
 const sequelize = require('./config/connection');
 require('dotenv').config();
 // const seedDatabase = require('./seeds/seed'); // Import the seed function
@@ -47,12 +45,13 @@ app.use(passport.session());
 
 // Use the indexRouter for handling routes
 const routes = require('./controllers');
+console.log(routes)
 app.use(routes);
 
 
 
 // Force true to drop/recreate table(s) on every sync
-sequelize.sync({ force: false }).then(async () => {
+sequelize.sync({ force: false}).then(async () => {
   // Uncomment this line to run the seed files
   // await seedDatabase();
 
@@ -65,13 +64,3 @@ sequelize.sync({ force: false }).then(async () => {
     );
   });
 });
-// Sync the database and start the server
-// try {
-//   await sequelize.sync();
-//   console.log('Database synchronized successfully');
-//   app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-//   });
-// } catch (error) {
-//   console.error('Error synchronizing database:', error);
-// }
