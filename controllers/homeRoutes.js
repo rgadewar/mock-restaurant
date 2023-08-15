@@ -6,11 +6,7 @@ const passport = require("../config/passport");
 const isAuthenticated = require("../utils/auth"); // Require the middleware file
 
 router.get('/', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/menu');
-        return;
-    }
-    res.render('login');
+    res.render('home');
     });
 
   router.get('/login', (req, res) => {
@@ -18,7 +14,7 @@ router.get('/', (req, res) => {
         res.redirect('/menu');
         return;
     }
-    res.render('login');
+    res.render('home');
     });
 
 

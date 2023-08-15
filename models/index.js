@@ -1,6 +1,7 @@
 // index.js
 const User = require('./User');
 const Product = require('./Product');
+const Gallery = require('./Gallery');
 const CartProduct = require('./cartProduct'); // Update the import statement
 
 // User-CartProduct relationship
@@ -23,4 +24,12 @@ Product.hasMany(CartProduct, {
   onDelete: 'CASCADE'
 });
 
-module.exports = { User, Product, CartProduct };
+Gallery.hasMany(Product, {
+  foreignKey: 'gallery_id',
+});
+
+Product.belongsTo(Gallery, {
+  foreignKey: 'gallery_id',
+});
+
+module.exports = { User, Product, CartProduct, Gallery };

@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const { User } = require('../models');
 
 const seedUsers = async () => {
-  //   await sequelize.sync({ force: true }); // This will recreate the User table
+  await sequelize.sync({ force: true }); // This will recreate the User table
 
   const hashedPassword1 = await bcrypt.hash('password1', 10);
   const hashedPassword2 = await bcrypt.hash('password2', 10);
@@ -21,6 +21,8 @@ const seedUsers = async () => {
   ]);
 
   console.log('Users seeded successfully');
+
+  process.exit(0);
 };
 
 seedUsers();
