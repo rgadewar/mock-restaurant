@@ -7,7 +7,7 @@ const ensureAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login'); // Redirect to the login page if not authenticated
+  res.redirect('/home'); // Redirect to the home page if not authenticated
 };
 
 // Route for user login

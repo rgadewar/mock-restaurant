@@ -1,6 +1,14 @@
 <!-- views/partials/product-item.handlebars -->
 
 <div class="card product-card">
+    <a href="/product/{{id}}">
+    <header>{{title}}</header>
+
+    <div class="card-body">
+      <img src="/images/{{filename}}" alt="{{description}}">
+    </div>
+  </a>
+
   <div class="card-body">
     <h5 class="card-title">{{ product_name }}</h5>
     <p class="card-text">Price: {{ price }}</p>
