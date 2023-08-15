@@ -1,7 +1,7 @@
 // CartProduct.js
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-const Product = require('./Product'); // Make sure the path is correct
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+const Product = require("./Product"); // Make sure the path is correct
 
 class CartProduct extends Model {
   static async addProduct(user, product, { quantity }) {
@@ -10,7 +10,7 @@ class CartProduct extends Model {
       const existingCartProduct = await CartProduct.findOne({
         where: {
           user_id: user.id,
-          product_id: product.id
+          product_id: product.id,
         },
       });
 
@@ -34,13 +34,27 @@ class CartProduct extends Model {
     }
   }
 
-  async getCartProduct() {
-    const cartProduct = await CartProduct.findOne({
-      where: { user_id: this.id },
-      include: [Product],
-    });
-    return cartProduct;
-  }
+  getCartProduct = async function () {
+    try {
+      console.log("Getting cart product for user ID:", this.user_id); // Log user ID
+
+      const cartProduct = await CartProduct.findOne({
+        where: { user_id: this.user_id },
+        include: [Product],
+      });
+
+      if (cartProduct) {
+        console.log("Cart product found:", cartProduct.id);
+      } else {
+        console.log("Cart product not found.");
+      }
+
+      return cartProduct;
+    } catch (error) {
+      console.error("Error fetching cart product:", error);
+      return null;
+    }
+  };
 }
 
 CartProduct.init(
@@ -54,20 +68,20 @@ CartProduct.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     },
     product_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'product',
-        key: 'id',
+        model: "product",
+        key: "id",
       },
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
     },
     quantity: {
       type: DataTypes.INTEGER,
@@ -85,7 +99,7 @@ CartProduct.init(
     sequelize,
     timestamps: false, // Disable timestamps
     underscored: true,
-    modelName: 'cart_product',
+    modelName: "cart_product",
   }
 );
 
