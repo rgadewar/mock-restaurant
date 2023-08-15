@@ -39,10 +39,21 @@ router.get('/products', async (req, res) => {
   });
    
 // Render the product page
+// router.get('/product/:id', isAuthenticated, async (req, res) => {
+//   const productId = req.params.id;
+//   const product = await Product.findByPk(productId);
+//   res.render('product', { product });
+// });
+// Render the product page
 router.get('/product/:id', isAuthenticated, async (req, res) => {
   const productId = req.params.id;
   const product = await Product.findByPk(productId);
-  res.render('product', { product });
+  
+  res.render('product', { 
+    loggedIn: true,  // Assuming the user is logged in
+    body: 'product', // 'product' is the name of the partial view (without '.handlebars')
+    product
+  });
 });
 
 
