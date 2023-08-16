@@ -29,55 +29,6 @@ router.post('/', async (req, res) => {
 });
   
 // Render the product page
-// router.get('/product-details', isAuthenticated, async (req, res) => {
-//   console.log("Endpoint hit!"); // Add this line
-//   const productId = req.params.productId; // Use req.params.productId
-//   console.log("**************productId", productId);
-
-//   try {
-//     // Fetch the product from the database using the provided product ID
-//     const product = await Product.findByPk(productId);
-
-//     if (!product) {
-//       console.log(`Product with ID ${productId} not found.`);
-//     } else {
-//       console.log('Retrieved product from database:', product);
-//       res.render('product', { product });
-//     }
-//   } catch (error) {
-//     console.error('Error retrieving product:', error);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
-
-// Render the product page
-// router.get('/product-details/:id', isAuthenticated, async (req, res) => {
-//   const productId = req.params.id;
-//   const product = await Product.findByPk(productId);
-  
-//   res.render('product', { 
-//     loggedIn: true,  // Assuming the user is logged in
-//     body: 'product', // 'product' is the name of the partial view (without '.handlebars')
-//     product
-//   });
-// });
-// router.get('/product-details/:productId', async (req, res) => {
-//   try {
-//     const productId = 1; // Replace with the actual product ID you want to retrieve
-//     const product = await Product.findByPk(productId);
-  
-//     if (!product) {
-//       console.log(`Product with ID ${productId} not found.`);
-//     } else {
-//       console.log('Product details:', product.toJSON());
-//     }
-//   } catch (error) {
-//     console.error('Error retrieving product:', error);
-//   }
-  
-// });
-
-// Render the product page
 router.get('/product/:id', isAuthenticated, async (req, res) => {
   const productId = req.params.id;
   const product = await Product.findByPk(productId);
