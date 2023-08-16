@@ -12,6 +12,8 @@ router.get("/cart", isAuthenticated, async (req, res) => {
 
     console.log("********Cart:", Cart);
 
+    let finalTotal = 0; // Initialize final total
+
     // Create an array to hold the serialized cart data
     const serializedCart = [];
 
@@ -19,26 +21,28 @@ router.get("/cart", isAuthenticated, async (req, res) => {
     for (const cartItem of Cart) {
       const product = await Product.findByPk(cartItem.product_id);
       if (product) {
+        const productTotal = cartItem.quantity * parseFloat(cartItem.price);
+        finalTotal += productTotal; // Accumulate product totals for final total
+
         serializedCart.push({
           productName: product.product_name,
           quantity: cartItem.quantity,
-          price: cartItem.price
+          price: cartItem.price,
+          total: productTotal.toFixed(2) // Individual product total
         });
       }
     }
 
     console.log("Serialized Cart:", serializedCart);
 
-    // Render the 'cart' template with the serialized cart data
-    res.render("cart", { cartItems: serializedCart });
+    // Render the 'cart' template with the serialized cart data and final total
+    res.render("cart", { cartItems: serializedCart, finalTotal: finalTotal.toFixed(2) });
 
   } catch (err) {
     console.error("Error fetching cart items:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
-
 
 
 // Handle adding a product to the cart
