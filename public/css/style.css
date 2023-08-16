@@ -1,13 +1,20 @@
 header {
-  padding: 20px;
+  padding-top: 90px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: #2a607c;
+  
   color: #ffffff;
+  background:url('../images/bannerimage.jpeg');
+    width:100%;
+    min-height:189px;
+    object-fit: fill;
+    background-size:100%;
+    
 }
 
 header h1 {
   display: inline-block;
   font-size: 48px;
+  -webkit-text-stroke: 2px black;
 }
 
 header h1 .seo {
@@ -16,10 +23,14 @@ header h1 .seo {
 /* changing targetting for nav */
 header nav {
   padding-top: 15px;
-  margin-right: 20px;
+  padding-left: 20px;
   float: right;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 20px;
+  background-color: #864d03;
+  border-radius: 30px;
+  border: 3px solid black;
+  
 }
 
 header nav ul {
@@ -29,6 +40,9 @@ header nav ul {
 header nav ul li {
   display: inline-block;
   margin-left: 25px;
+  margin-right: 25px;
+  padding: 2;
+  
 }
 
 .img-fluid {
@@ -63,8 +77,20 @@ header nav ul li {
   .card-body {
     padding: 1%;
   }
+
+
+  /*made hyperlinks not have the color blue*/
+  a {
+    color: inherit;/* uses color the sentence is already using*/
+  }
   
   .image-reduced {
     width: 20vw; /* 20% of the viewport width */
     height: auto; /* Maintain aspect ratio */
+}
+/* outline text
+.strokeme {
+  color: white;
+  background-color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
