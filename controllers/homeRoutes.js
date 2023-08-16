@@ -6,17 +6,20 @@ const passport = require("../config/passport");
 const isAuthenticated = require("../utils/auth"); // Require the middleware file
 
 router.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', { loggedIn: req.session.loggedIn});
     });
 
-  router.get('/login', (req, res) => {
+router.get('/home', (req, res) => {
+  res.render('home', { loggedIn: req.session.loggedIn });
+  });
+
+router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-        res.redirect('/menu');
+        res.redirect('/home');
         return;
     }
-    res.render('home');
+    res.render('login');
     });
-
 
 // GET route to render the signup page
 router.get('/signup', (req, res) => {
@@ -24,23 +27,18 @@ router.get('/signup', (req, res) => {
 });
 
 // Inside your router configuration
-// router.get('/menu',isAuthenticated, (req, res) => {
-//     res.render('menu', { loggedIn: req.session.loggedIn }); // Pass loggedIn to the template context
-// });
-
-// Inside your router configuration
-router.get('/menu', isAuthenticated, async (req, res) => {
+router.get('/menu',isAuthenticated,  async (req, res) => {
     try {
-      // Fetch all products from the database
-      const products = await Product.findAll();
-      
-      // Render the 'menu' template and pass the products data
-      res.render('menu', { loggedIn: req.session.loggedIn, products });
+        // Fetch all products from the database
+        const products = await Product.findAll();
+
+        // Render the 'menu' template and pass the products data
+        res.render('menu', { loggedIn: req.session.loggedIn, products });
     } catch (err) {
-      console.error("Error fetching products:", err);
-      res.status(500).json({ error: "Internal Server Error" });
+        console.error("Error fetching products:", err);
+        res.status(500).json({ error: "Internal Server Error" });
     }
-  });
-  
+});
+
 
 module.exports = router;

@@ -56,3 +56,4 @@ addToCartForm.addEventListener('submit', event => {
     console.error('Invalid quantity');
   }
 });
+
