@@ -24,15 +24,15 @@ router.get("/login", (req, res) => {
 
 // GET route to render the signup page
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { loggedIn: req.session.loggedIn });
 });
 router.get("/contact", (req, res) => {
   res.render('contact', {
-       apiKey: process.env.GOOGLE_MAPS_API_KEY
+       apiKey: process.env.GOOGLE_MAPS_API_KEY, loggedIn: req.session.loggedIn
    });
 });
 
@@ -40,7 +40,7 @@ router.get("/gallery", async (req, res) => {
   try {
     const galleries = await Gallery.findAll();
     const imageUrls = galleries.map((gallery) => gallery.filename);
-    res.render("gallery", { images: imageUrls });
+    res.render("gallery", { images: imageUrls, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.error("Error fetching gallery images:", err);
     return res.status(500).send("Internal Server Error");

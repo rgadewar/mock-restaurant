@@ -30,10 +30,10 @@ router.get("/cart", isAuthenticated, async (req, res) => {
       }
     }
 
-    console.log("Serialized Cart:", serializedCart);
+    // console.log("Serialized Cart:", serializedCart);
 
     // Render the 'cart' template with the serialized cart data and final total
-    res.render("cart", { cartItems: serializedCart, finalTotal: finalTotal.toFixed(2) });
+    res.render("cart", { cartItems: serializedCart, finalTotal: finalTotal.toFixed(2), loggedIn: req.session.loggedIn });
 
   } catch (err) {
     console.error("Error fetching cart items:", err);
