@@ -152,4 +152,9 @@ img {
       border-radius: 10px; /* Add rounded corners for small screens */
   }
 }
+#map {
+  width: 50%;
+  height: 400px;
+  margin: 0 auto;
+}
 
