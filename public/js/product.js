@@ -1,15 +1,15 @@
- // Get product details from the page
- const product = {
+// Get product details from the page
+const product = {
   product_name: "{{ product.product_name }}", // Use the template engine to insert the product name
   price: "{{ product.price }}", // Remove unnecessary whitespace before product.price
   stock: "{{ product.stock }}",
   productId: "{{ product.id }}",
 };
 
-console.log("product_name", product.product_name);
-console.log("product_price", product.price);
-console.log("product_stock", product.stock);
-console.log("productId: ", product.id);
+// console.log("product_name", product.product_name);
+// console.log("product_price", product.price);
+// console.log("product_stock", product.stock);
+// console.log("productId: ", product.id);
 
 // Get the current URL
 const currentURL = window.location.href;
@@ -37,23 +37,48 @@ addToCartForm.addEventListener('submit', event => {
     const price = parseFloat(product.price); // Parse price as a float
     fetch('/add-to-cart', {
       method: 'POST',
-      body: JSON.stringify({ product_id: productID, quantity}), // Include price
+      body: JSON.stringify({ product_id: productID, quantity }),
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Request failed with status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(result => {
       // Handle success or show error message
-      console.log(result);
+      if (result.message) {
+        // Handle success message
+        displaySuccessMessage(result.message);
+      } else {
+        // Handle error message
+        displayErrorMessage(result.error);
+      }
     })
     .catch(error => {
       // Handle error
-      console.error(error);
+      console.error("Fetch error:", error);
     });
-  } else {
-    // Show error message for invalid quantity
-    console.error('Invalid quantity');
+    
+    // Function to display success message
+    function displaySuccessMessage(message) {
+      const successMessage = document.createElement('div');
+      successMessage.textContent = message;
+      successMessage.style.color = 'green';
+      document.body.appendChild(successMessage);
+    }
+    
+    // Function to display error message
+    function displayErrorMessage(error) {
+      const errorMessage = document.createElement('div');
+      errorMessage.textContent = error;
+      errorMessage.style.color = 'red';
+      document.body.appendChild(errorMessage);
+    }
+    
+    
   }
 });
-

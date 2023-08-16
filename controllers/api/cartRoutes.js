@@ -9,9 +9,6 @@ router.get("/cart", isAuthenticated, async (req, res) => {
     const Cart = await CartProduct.findAll({
       where: { user_id: req.session.passport.user.id }
     });
-
-    console.log("********Cart:", Cart);
-
     let finalTotal = 0; // Initialize final total
 
     // Create an array to hold the serialized cart data
@@ -68,13 +65,15 @@ router.post("/add-to-cart", isAuthenticated, async (req, res) => {
       // Add the selected product to the cart
       const result = await CartProduct.addProduct(user, product, { quantity });
 
-      // if (result.success) {
-      //   res.status(200).json({ message: result.message });
-      // } else {
-      //   res.status(400).json({ error: result.message });
-      // }
-      // Redirect to the success page
-      res.redirect("/success"); // Replace "/success" with the actual success page URL
+      if (result.success) {
+        // Send a JSON response with success message
+        // res.status(200).json({ message: "Product added to cart successfully" });
+        console.log("***************result.success", result.success)
+        res.render("success");
+
+      } else {
+        res.status(400).json({ error: result.message });
+      }
     } catch (error) {
       console.error("Error creating/getting cart:", error);
       res.status(500).json({ error: "Internal Server Error" });

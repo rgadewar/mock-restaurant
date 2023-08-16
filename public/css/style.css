@@ -51,7 +51,7 @@ header nav ul li {
 }
 
 .card {
-    background-color: #3e6a6fa8;
+    background-color:  #cbd0d2;
     margin: 0 0 20px 0;
     /* border: 2px solid var(--dark); */
     border-radius: .4rem;
@@ -88,9 +88,68 @@ header nav ul li {
     width: 20vw; /* 20% of the viewport width */
     height: auto; /* Maintain aspect ratio */
 }
-/* outline text
+/* outline text */
 .strokeme {
   color: white;
   background-color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+
+.slideshow-container {
+  max-width: 500px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* Add this CSS to your existing style.css or create a new CSS file */
+.spacer {
+  height: 30px; /* Adjust the height as needed */
+}
+
+/* Styles for the social links */
+.social-link {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #000; /* Set your desired link color */
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #007bff; /* Set your desired hover color */
+}
+
+
+
+/* Custom styles for login form */
+.login-form, .contact-form {
+  /* Your custom styles here */
+  width: auto;
+  height: auto;
+  /* Example responsive style */
+  @media (max-width: 576px) {
+      padding: 10px; /* Add some padding for small screens */
+      border-radius: 10px; /* Add rounded corners for small screens */
+  }
+}
+
+/* Custom styles for sign-up form */
+.signup-form {
+  /* Your custom styles here */
+  width: auto;
+  height: auto;
+  /* Example responsive style */
+  @media (max-width: 576px) {
+      padding: 10px; /* Add some padding for small screens */
+      border-radius: 10px; /* Add rounded corners for small screens */
+  }
+}
+

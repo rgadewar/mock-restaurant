@@ -2,7 +2,7 @@ const sequelize = require('../config/connection');
 const { Gallery } = require('../models');
 
 const seedGallery = async () => {
-  await sequelize.sync({ force: true }); // Drop and recreate tables
+  await sequelize.sync({ force: false }); // Drop and recreate tables
 
   try {
     const galleryData = [

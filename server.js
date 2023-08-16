@@ -27,6 +27,7 @@ app.engine(
     runtimeOptions: {
       allowProtoPropertiesByDefault: true, // Enable the option
     },
+    partialsDir: __dirname + "/views/partials" // Add this line
   })
   
 );

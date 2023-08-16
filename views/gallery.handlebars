@@ -1,10 +1,9 @@
-<section class="container">
-  <h3 class="gallery-name">{{gallery.name}}</h3>
-  <section class="flex-row justify-center">
-    {{#each gallery.products as |product|}}
-    {{> product-item}}
-    {{/each}}
-  </section>
-</section>
+<div class="slideshow-container">
+  {{#each images}}
+    <div class="mySlides">
+      <img src="/images/{{this}}" alt="Slideshow Image">
+    </div>
+  {{/each}}
+</div>
 
 <script src="/js/gallery.js"></script>
