@@ -1,7 +1,7 @@
 // CartProduct.js
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const Product = require("./Product"); // Make sure the path is correct
+const Product = require("./product"); // Make sure the path is correct
 
 class CartProduct extends Model {
   static async addProduct(user, product, { quantity }) {

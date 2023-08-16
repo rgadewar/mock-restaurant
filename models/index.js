@@ -1,8 +1,10 @@
 // index.js
 const User = require('./User');
-const Product = require('./Product');
+const Product = require('./product');
 const Gallery = require('./Gallery');
 const CartProduct = require('./cartProduct'); // Update the import statement
+
+
 
 // User-CartProduct relationship
 User.hasOne(CartProduct, {
