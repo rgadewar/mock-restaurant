@@ -1,9 +1,8 @@
 <nav class="nav">
   {{#if loggedIn}}
-  <a class="nav-item nav-link" href="/">Home</a>
-  <a class="nav-item nav-link" href="/menu">Menu</a>
-  <a class="nav-item nav-link" href="/cart">Cart</a>
-  <a class="nav-item nav-link" href="/gallery">Gallery</a>
-  <a class="link" href="/" id="logout">Logout</a>
+    <li><a class="nav-item nav-link" href="/cart">Cart</a></li>
+    <li><a class="link" href="/" id="logout">Logout</a></li>
+  {{else}}
+    <li><a class="link" href="/login">Login</a></li>
   {{/if}}
 </nav>

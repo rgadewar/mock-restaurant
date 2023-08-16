@@ -6,7 +6,8 @@ module.exports = function(req, res, next) {
 
     // console.log("req.session.loggedIn " + req.session.loggedIn)
     if (!req.user) {
-      return res.redirect("/login");
+      // return res.redirect("/login");
+      res.render('login', { loggedIn: false }); 
     } else {
       // console.log(req.user.id)
       return next();
