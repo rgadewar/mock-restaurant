@@ -25,8 +25,15 @@ Product.init(
       validate: {
         isDecimal: true,
       },
+    },
+
+    incart: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     }
   },
+
   {
     sequelize,
     timestamps: false,

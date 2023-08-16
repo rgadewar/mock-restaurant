@@ -37,24 +37,27 @@ class CartProduct extends Model {
   getCartProduct = async function () {
     try {
       console.log("Getting cart product for user ID:", this.user_id); // Log user ID
-
+  
       const cartProduct = await CartProduct.findOne({
         where: { user_id: this.user_id },
-        include: [Product],
+        include: {
+          model: Product,
+        },
       });
-
+  
       if (cartProduct) {
         console.log("Cart product found:", cartProduct.id);
       } else {
         console.log("Cart product not found.");
       }
-
+  
       return cartProduct;
     } catch (error) {
       console.error("Error fetching cart product:", error);
       return null;
     }
   };
+  
 }
 
 CartProduct.init(

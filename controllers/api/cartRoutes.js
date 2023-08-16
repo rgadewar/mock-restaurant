@@ -6,33 +6,32 @@ const isAuthenticated = require("../../utils/auth"); // Require the middleware f
 // Render the cart page
 router.get("/cart", isAuthenticated, async (req, res) => {
   try {
-    console.log("Route - req.session.userId:", req.session.passport.user.id);
-
-    // Fetch the user's cart product along with product details
-    const user = await User.findOne({
-      where: { id: req.session.passport.user.id },
-      include: [CartProduct],
+    const Cart = await CartProduct.findAll({
+      where: { user_id: req.session.passport.user.id }
     });
-    
-    console.log("***************************Fetched User:", user);
-    if (user && user.cart_product) {
-      const cartProduct = user.cart_product;
-    
-      console.log("Cart Product ID:", cartProduct.id);
-      if (cartProduct.dataValues.product) {
-        console.log("Product Name:", cartProduct.dataValues.product.dataValues.product_name);
-        console.log("Quantity:", cartProduct.quantity);
-        console.log("Price:", cartProduct.price);
-        console.log("=============================");
-      } else {
-        console.log("No product information found for the cart item.");
+
+    console.log("********Cart:", Cart);
+
+    // Create an array to hold the serialized cart data
+    const serializedCart = [];
+
+    // Iterate through each cart item and find the associated product
+    for (const cartItem of Cart) {
+      const product = await Product.findByPk(cartItem.product_id);
+      if (product) {
+        serializedCart.push({
+          productName: product.product_name,
+          quantity: cartItem.quantity,
+          price: cartItem.price
+        });
       }
-    } else {
-      console.log("No cart products found for the user.");
     }
-    
-    
-    
+
+    console.log("Serialized Cart:", serializedCart);
+
+    // Render the 'cart' template with the serialized cart data
+    res.render("cart", { cartItems: serializedCart });
+
   } catch (err) {
     console.error("Error fetching cart items:", err);
     res.status(500).json({ error: "Internal Server Error" });

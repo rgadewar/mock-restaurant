@@ -1,27 +1,14 @@
-<div class="cart">
-  <h2>Your Cart</h2>
-  {{#if cartItems.length}}
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Product Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each cartItems}}
-          <tr>
-            <td>{{ product.product_name }}</td>
-            <td>{{ quantity }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.price * quantity }}</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  {{else}}
-    <p>Your cart is empty.</p>
-  {{/if}}
-</div>
+<h1>Your Cart</h1>
+  <div class="cart-items">
+    {{#each cartItems}}
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{productName}}</h5>
+          <p class="card-text">
+            <strong>Quantity:</strong> {{quantity}}<br>
+            <strong>Price:</strong> {{price}}
+          </p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
