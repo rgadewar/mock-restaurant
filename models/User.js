@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 const CartProduct = require('./cartProduct'); // Update the import statement
-const Product = require('./Product'); // Import the Product model
+const Product = require('./product'); // Import the Product model
 
 class User extends Model {
   validPassword(loginPassword) {
