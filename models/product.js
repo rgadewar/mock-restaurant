@@ -26,7 +26,11 @@ Product.init(
         isDecimal: true,
       },
     },
-
+    cartQuantity: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0 // Initialize cartQuantity to 0
+    },
+    
     incart: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

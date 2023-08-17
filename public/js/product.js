@@ -6,11 +6,6 @@ const product = {
   productId: "{{ product.id }}",
 };
 
-// console.log("product_name", product.product_name);
-// console.log("product_price", product.price);
-// console.log("product_stock", product.stock);
-// console.log("productId: ", product.id);
-
 // Get the current URL
 const currentURL = window.location.href;
 
@@ -28,7 +23,7 @@ const addToCartForm = document.getElementById('add-to-cart-form');
 // Add event listener for form submission
 addToCartForm.addEventListener('submit', event => {
   event.preventDefault(); // Prevent default form submission
-  
+
   const quantity = parseInt(document.getElementById('quantity').value, 10);
   console.log("quantity ", quantity);
 
@@ -44,25 +39,31 @@ addToCartForm.addEventListener('submit', event => {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error(`Request failed with status: ${response.status}`);
+        return response.json().then(data => {
+          throw new Error(data.error || "An error occurred while processing your request.");
+        });
       }
       return response.json();
     })
     .then(result => {
+      console.log("Result:", result); 
       // Handle success or show error message
       if (result.message) {
         // Handle success message
         displaySuccessMessage(result.message);
+        window.location.href = "/success"; // Redirect to success page
       } else {
         // Handle error message
+        console.log("Error:", result.error);
         displayErrorMessage(result.error);
       }
     })
     .catch(error => {
-      // Handle error
+      // Handle fetch error or unexpected response
       console.error("Fetch error:", error);
+      displayErrorMessage(error.message || "An error occurred while processing your request.");
     });
-    
+
     // Function to display success message
     function displaySuccessMessage(message) {
       const successMessage = document.createElement('div');
@@ -70,7 +71,7 @@ addToCartForm.addEventListener('submit', event => {
       successMessage.style.color = 'green';
       document.body.appendChild(successMessage);
     }
-    
+
     // Function to display error message
     function displayErrorMessage(error) {
       const errorMessage = document.createElement('div');
@@ -78,7 +79,5 @@ addToCartForm.addEventListener('submit', event => {
       errorMessage.style.color = 'red';
       document.body.appendChild(errorMessage);
     }
-    
-    
   }
 });
