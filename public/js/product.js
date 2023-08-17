@@ -56,11 +56,20 @@ addToCartForm.addEventListener('submit', event => {
         displayErrorMessage(result.error);
       }
     })
-    .catch(error => {
+    .catch(async error => {
       // Handle fetch error or unexpected response
       console.error("Fetch error:", error);
-      displayErrorMessage("An error occurred while processing your request.");
+    
+      try {
+        const errorResponse = await error.response.json();
+        const errorMessage = errorResponse.error || "An error occurred while processing your request.";
+        displayErrorMessage(errorMessage);
+      } catch (jsonError) {
+        displayErrorMessage("An error occurred while processing your request.");
+      }
     });
+    
+    
 
     // Function to display success message
     function displaySuccessMessage(message) {
