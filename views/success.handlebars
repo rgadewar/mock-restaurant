@@ -1,5 +1,5 @@
 <!-- Inherit the main layout -->
-{{! {{> main}} }}
+{{! {{> main}} 
 
 <!-- Define the body content -->
 <div class="container mt-4">
@@ -8,10 +8,10 @@
       <h2>Product Added to Cart</h2>
     </div>
     <div class="card-body">
-      <h3>{{ product.product_name }}</h3>
+      {{!-- <h3>{{ product.product_name }}</h3>
       <p>Price: {{ product.price }}</p>
       <p>Stock: {{ product.stock }}</p>
-      <p>Quantity: {{ quantity }}</p>
+      <p>Quantity: {{ quantity }}</p> --}}
       <p>Successfully added to cart!</p>
       <button class="btn btn-secondary" onclick="continueShopping()">Continue Shopping</button>
       <button class="btn btn-info" onclick="goToCart()">Go to Cart</button>
@@ -22,7 +22,7 @@
 <!-- Include custom JavaScript for the success page -->
 <script>
   function continueShopping() {
-    window.location.href = "/"; // Redirect to the menu page
+    window.location.href = "/menu"; // Redirect to the menu page
   }
 
   function goToCart() {

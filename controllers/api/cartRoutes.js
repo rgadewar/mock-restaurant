@@ -41,7 +41,7 @@ router.get("/cart", isAuthenticated, async (req, res) => {
   }
 });
 
-
+// Handle adding a product to the cart
 // Handle adding a product to the cart
 router.post("/add-to-cart", isAuthenticated, async (req, res) => {
   const { product_id, quantity } = req.body;
@@ -61,25 +61,45 @@ router.post("/add-to-cart", isAuthenticated, async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
+    // Check if the product is already in the cart
+    const cartProduct = await CartProduct.findOne({
+      where: {
+        user_id: user.id,
+        product_id: product.id,
+      },
+    });
+
     try {
-      // Add the selected product to the cart
-      const result = await CartProduct.addProduct(user, product, { quantity });
-
-      if (result.success) {
-        // Send a JSON response with success message
-        // res.status(200).json({ message: "Product added to cart successfully" });
-        console.log("***************result.success", result.success)
-        res.render("success");
-
+      if (cartProduct) {
+        // Product already in cart, increase quantity
+        const updatedQuantity = cartProduct.quantity + quantity;
+        if (updatedQuantity > product.dataValues.stock) {
+          const errorMessage = `Not enough stock for this product. Available stock: ${product.dataValues.stock}`;
+          return res.status(400).json({ error: errorMessage });
+        }
+        cartProduct.quantity = updatedQuantity;
+        await cartProduct.save();
       } else {
-        res.status(400).json({ error: result.message });
+        // If the product is not in the cart, add it
+        const result = await CartProduct.addProduct(user, product, { quantity });
+
+        if (!result.success) {
+          return res.status(400).json({ error: result.message });
+        }
       }
+
+      // Update the product's cartQuantity
+      product.cartQuantity += quantity;
+      await product.save();
+
+      // Send a JSON response with success message
+      res.status(200).json({ message: "Product added to cart successfully" });
     } catch (error) {
-      console.error("Error creating/getting cart:", error);
-      res.status(500).json({ error: "Internal Server Error" });
+      console.error("Error adding/updating product to cart:", error);
+      res.status(500).json({ error: "An error occurred while processing your request." });
     }
   } catch (err) {
-    console.error("Error adding product to cart:", err);
+    console.error("Error fetching product/user:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

@@ -48,7 +48,7 @@ router.get("/gallery", async (req, res) => {
 });
 
 router.get("/success", (req, res) => {
-  res.render("success");
+  res.render("success", {loggedIn: req.session.loggedIn });
 });
 
 // Inside your router configuration
