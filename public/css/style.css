@@ -135,10 +135,7 @@ img {
   width: auto;
   height: auto;
   /* Example responsive style */
-  @media (max-width: 576px) {
-      padding: 10px; /* Add some padding for small screens */
-      border-radius: 10px; /* Add rounded corners for small screens */
-  }
+  
 }
 
 /* Custom styles for sign-up form */
@@ -147,10 +144,7 @@ img {
   width: auto;
   height: auto;
   /* Example responsive style */
-  @media (max-width: 576px) {
-      padding: 10px; /* Add some padding for small screens */
-      border-radius: 10px; /* Add rounded corners for small screens */
-  }
+  
 }
 #map {
   width: 50%;
@@ -158,3 +152,29 @@ img {
   margin: 0 auto;
 }
 
+/* Custom styles for login form */
+.login-form, .contact-form, .signup-form {
+  width: 100%; /* Make the form width 100% to adapt to different screen sizes */
+  max-width: 500px; /* Limit the maximum width for better readability */
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 20px; /* Add some padding to create separation from the edges */
+  box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+/* Adjust form elements to fit within the form's width */
+.login-form input[type="text"],
+.login-form input[type="password"],
+.contact-form input[type="text"],
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Customize form layout for smaller screens */
+@media screen and (max-width: 600px) {
+  .login-form, .contact-form, .signup-form {
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+}
