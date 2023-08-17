@@ -39,7 +39,9 @@ addToCartForm.addEventListener('submit', event => {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error(`Request failed with status: ${response.status}`);
+        return response.json().then(data => {
+          throw new Error(data.error || "An error occurred while processing your request.");
+        });
       }
       return response.json();
     })
@@ -50,26 +52,17 @@ addToCartForm.addEventListener('submit', event => {
         // Handle success message
         displaySuccessMessage(result.message);
         window.location.href = "/success"; // Redirect to success page
-      } else if (result.error) {
+      } else {
         // Handle error message
         console.log("Error:", result.error);
         displayErrorMessage(result.error);
       }
     })
-    .catch(async error => {
+    .catch(error => {
       // Handle fetch error or unexpected response
       console.error("Fetch error:", error);
-    
-      try {
-        const errorResponse = await error.response.json();
-        const errorMessage = errorResponse.error || "An error occurred while processing your request.";
-        displayErrorMessage(errorMessage);
-      } catch (jsonError) {
-        displayErrorMessage("An error occurred while processing your request.");
-      }
+      displayErrorMessage(error.message || "An error occurred while processing your request.");
     });
-    
-    
 
     // Function to display success message
     function displaySuccessMessage(message) {
