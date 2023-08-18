@@ -7,6 +7,12 @@ class Product extends Model {}
 
 Product.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     product_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,12 +36,18 @@ Product.init(
       type: DataTypes.INTEGER,
       defaultValue: 0 // Initialize cartQuantity to 0
     },
-    
+    gallery_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Gallery',
+        key: 'id',
+      },
+    },    
     incart: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
-    }
+    },
   },
 
   {

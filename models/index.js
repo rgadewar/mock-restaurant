@@ -16,27 +16,14 @@ CartProduct.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-// CartProduct-Product relationship
-// CartProduct.belongsTo(Product, {
-//   foreignKey: 'product_id'
-// });
-
-// Product.hasMany(CartProduct, {
-//   foreignKey: 'product_id',
-//   onDelete: 'CASCADE'
-// });
-
-
 Product.belongsTo(CartProduct, {
-  foreignKey: 'product_id'
+  foreignKey: 'cartProduct_id'
 });
 
 CartProduct.hasMany(Product, {
   foreignKey: 'product_id',
   onDelete: 'CASCADE'
 });
-
-
 
 Gallery.hasMany(Product, {
   foreignKey: 'gallery_id',
