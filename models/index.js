@@ -14,7 +14,7 @@ CartProduct.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Product.belongsTo(CartProduct, {
+CartProduct.belongsTo(Product, {
   foreignKey: 'product_id'
 });
 

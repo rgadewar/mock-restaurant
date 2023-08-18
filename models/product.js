@@ -8,7 +8,6 @@ Product.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -35,13 +34,6 @@ Product.init(
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
-    gallery_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Gallery',
-        key: 'id',
-      },
-    },    
     incart: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
