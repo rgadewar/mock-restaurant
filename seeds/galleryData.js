@@ -42,7 +42,8 @@ const seedGallery = async () => {
         ProductId: 5, 
       },
       {
-        // gallery_id: 6,
+        
+        gallery_id: 6,
         product_name: 'Snickerdoodle',
         filename: '06-snickerdoodle.jpg',
         description: 'Coated in cinnamon-sugar, these soft, pillowy cookies offer a nostalgic blend of warmth and sweetness.',
