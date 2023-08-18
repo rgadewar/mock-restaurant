@@ -15,7 +15,7 @@ CartProduct.belongsTo(User, {
 });
 
 Product.belongsTo(CartProduct, {
-  foreignKey: 'cartProduct_id'
+  foreignKey: 'product_id'
 });
 
 Product.hasMany(CartProduct, {

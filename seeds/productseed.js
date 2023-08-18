@@ -13,94 +13,58 @@ const seedProducts = async () => {
         product_name: 'Chocolate Chip',
         price: 1.99,
         stock: 30,
-        // gallery_id: 1, 
+        gallery_id: 1, 
       },
       {
         id: 2,
         product_name: 'Peanut Butter',
         price: 2.99,
         stock: 27,
-        // gallery_id: 2, 
+        gallery_id: 2, 
       },
       {
         id: 3,
         product_name: 'Sugar',
         price: 1.99,
         stock: 30,
-        // gallery_id: 3, 
+        gallery_id: 3, 
       },
       {
         id: 4,
         product_name: 'Red Velvet',
         price: 3.99,
         stock: 18,
-        // gallery_id: 4, 
+        gallery_id: 4, 
       },
       {
         id: 5,
         product_name: 'Double Chocolate',
         price: 2.99,
         stock: 20,
-        // gallery_id: 5, 
+        gallery_id: 5, 
       },
       {
         id: 6,
         product_name: 'Snickerdoodle',
         price: 1.99,
         stock: 25,
-        // gallery_id: 6, 
+        gallery_id: 6, 
       },
       {
         id: 7,
         product_name: 'White Chocolate Macadamia Nut',
         price: 2.99,
         stock: 30,
-        // gallery_id: 7, 
+        gallery_id: 7, 
       },
       {
         id: 8,
         product_name: 'Lemon Crinkle',
         price: 2.99,
         stock: 28,
-        // gallery_id: 8, 
-      },
-      {
-        product_name: 'Sugar',
-        price: 19.99,
-        stock: 10,
-        gallery_id: 3, 
-      },
-      {
-        product_name: 'Red Velvet',
-        price: 19.99,
-        stock: 10,
-        gallery_id: 4, 
-      },
-      {
-        product_name: 'Double Chocolate',
-        price: 19.99,
-        stock: 10,
-        gallery_id: 5, 
-      },
-      {
-        product_name: 'Snickerdoodle',
-        price: 19.99,
-        stock: 10,
-        gallery_id: 6, 
-      },
-      {
-        product_name: 'White Chocolate Macadamia Nut',
-        price: 19.99,
-        stock: 10,
-        gallery_id: 7, 
-      },
-      {
-        product_name: 'Lemon Crinkle',
-        price: 19.99,
-        stock: 10,
         gallery_id: 8, 
-      },
-      
+      }
+ 
     ];
 
     // Bulk create products
