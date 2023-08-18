@@ -22,6 +22,7 @@ router.get("/cart", isAuthenticated, async (req, res) => {
         finalTotal += productTotal; // Accumulate product totals for final total
 
         serializedCart.push({
+          id:cartItem.id,
           productName: product.product_name,
           quantity: cartItem.quantity,
           price: cartItem.price,
@@ -41,7 +42,6 @@ router.get("/cart", isAuthenticated, async (req, res) => {
   }
 });
 
-// Handle adding a product to the cart
 // Handle adding a product to the cart
 router.post("/add-to-cart", isAuthenticated, async (req, res) => {
   const { product_id, quantity } = req.body;
@@ -104,4 +104,77 @@ router.post("/add-to-cart", isAuthenticated, async (req, res) => {
   }
 });
 
+// Handle updating cart item quantity
+router.put("/update-cart", isAuthenticated, async (req, res) => {
+  const { id, quantity } = req.body;
+  console.log("cartItemId", id);
+  console.log("quantity", quantity);
+
+
+  try {
+    // Fetch the cart item by ID
+    const cartItem = await CartProduct.update(req.body, {
+      where: {
+        id: id
+      }
+    });
+
+    if (!cartItem) {
+      return res.status(404).json({ error: "Cart item not found" });
+    }
+
+    // Fetch the associated product
+    // const product = await Product.findByPk(cartItem.product_id);
+
+    // if (!product) {
+    //   return res.status(404).json({ error: "Product not found" });
+    // }
+
+    // Update cart item quantity and recalculate total
+    // cartItem.quantity = quantity;
+    // const updatedTotal = cartItem.quantity * parseFloat(cartItem.price);
+    // cartItem.total = updatedTotal.toFixed(2);
+
+    // // Save the updated cart item
+    // await cartItem.save();
+
+    // Update the product's cartQuantity
+    // product.cartQuantity = quantity;
+    // await product.save();
+
+    // Send a JSON response with success message
+    res.status(200).json({ message: "Cart item quantity updated successfully" });
+  } catch (error) {
+    console.error("Error updating cart item quantity:", error);
+    res.status(500).json({ error: "An error occurred while processing your request." });
+  }
+});
+
+// Handle deleting a cart item
+router.delete("/delete-cart", isAuthenticated, async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    // Fetch the cart item by ID
+    const cartItem = await CartProduct.destroy({
+      where: {
+        id: id
+      }
+    });
+
+    if (!cartItem) {
+      return res.status(404).json({ error: "Cart item not found" });
+    }
+
+
+    // Send a JSON response with success message
+    res.status(200).json({ message: "Cart item deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting cart item:", error);
+    res.status(500).json({ error: "An error occurred while processing your request." });
+  }
+});
+
 module.exports = router;
+
+

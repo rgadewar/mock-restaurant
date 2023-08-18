@@ -1,4 +1,3 @@
-// product.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
@@ -34,7 +33,7 @@ Product.init(
     },
     cartQuantity: {
       type: DataTypes.INTEGER,
-      defaultValue: 0 // Initialize cartQuantity to 0
+      defaultValue: 0,
     },
     gallery_id: {
       type: DataTypes.INTEGER,
@@ -49,13 +48,12 @@ Product.init(
       defaultValue: false,
     },
   },
-
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "product",
+    modelName: 'product',
   }
 );
 

@@ -64,7 +64,43 @@ const seedProducts = async () => {
         stock: 28,
         // gallery_id: 8, 
       },
-      // Add more products here
+      {
+        product_name: 'Sugar',
+        price: 19.99,
+        stock: 10,
+        gallery_id: 3, 
+      },
+      {
+        product_name: 'Red Velvet',
+        price: 19.99,
+        stock: 10,
+        gallery_id: 4, 
+      },
+      {
+        product_name: 'Double Chocolate',
+        price: 19.99,
+        stock: 10,
+        gallery_id: 5, 
+      },
+      {
+        product_name: 'Snickerdoodle',
+        price: 19.99,
+        stock: 10,
+        gallery_id: 6, 
+      },
+      {
+        product_name: 'White Chocolate Macadamia Nut',
+        price: 19.99,
+        stock: 10,
+        gallery_id: 7, 
+      },
+      {
+        product_name: 'Lemon Crinkle',
+        price: 19.99,
+        stock: 10,
+        gallery_id: 8, 
+      },
+      
     ];
 
     // Bulk create products
@@ -75,7 +111,7 @@ const seedProducts = async () => {
     console.error('Error seeding products:', err);
   }
 
-  process.exit(0); // Exit the process
+  // process.exit(0); // Exit the process
 };
 
 seedProducts();

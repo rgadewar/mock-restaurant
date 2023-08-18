@@ -1,19 +1,31 @@
 <h1>Your Cart</h1>
-  <div class="cart-items">
-    {{#each cartItems}}
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{productName}}</h5>
-          <p class="card-text">
-            <strong>Quantity:</strong> {{quantity}}<br>
-            <strong>Price:</strong> {{price}}<br>
-            <strong>Total:</strong> {{total}}
-          </p>
+<div class="cart-items">
+  {{#each cartItems}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{productName}}</h5>
+        <p class="card-text">
+          <strong>Quantity:</strong> 
+           <span class="quantity-value" data-id="{{id}}">{{quantity}}</span>
+        </p>
+        <p class="card-text">
+          <strong>Price:</strong> {{price}}<br>
+          <strong>Total:</strong> {{total}}
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="button-group">
+          <button class="btn btn-danger delete-btn" data-id="{{id}}">Delete</button>
+          <button class="btn btn-secondary edit-btn" data-id="{{id}}">Edit</button>
+          
+          <button class="btn btn-primary update-quantity-btn" data-id="{{id}}" style="display: none;">Update</button>
         </div>
       </div>
-    {{/each}}
-
-    <div class="final-total">
-      <h4>Final Total: {{finalTotal}}</h4>
     </div>
+  {{/each}}
+
+  <div class="final-total">
+    <h4>Final Total: {{finalTotal}}</h4>
   </div>
+</div>
+<script src="/js/cart.js"></script>
