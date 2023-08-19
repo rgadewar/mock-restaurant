@@ -1,6 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
 class Contact extends Model {}
+
 Contact.init(
   {
     name: {
@@ -26,4 +28,5 @@ Contact.init(
     modelName: 'contact',
   }
 );
+
 module.exports = Contact;

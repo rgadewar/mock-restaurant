@@ -1,11 +1,9 @@
-<!-- views/partials/product-item.handlebars -->
-
-<div class="card product-card" data-product-id="{{id}}">
-    <a href="/product/{{id}}">
-    <header>{{title}}</header>
-
+<div class="card product-card small-card" data-product-id="{{id}}"
+     style="max-width: 250px;"> <!-- Adjust max-width as needed -->
+  <a href="/product/{{id}}">
     <div class="card-body">
-      <img src="/images/{{filename}}" alt="{{description}}">
+      <img src="/images/{{gallery.filename}}" alt="{{description}}"
+           style="max-width: 100%; height: auto;">
     </div>
   </a>
 

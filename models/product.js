@@ -1,4 +1,3 @@
-// product.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
@@ -9,7 +8,6 @@ Product.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -34,28 +32,20 @@ Product.init(
     },
     cartQuantity: {
       type: DataTypes.INTEGER,
-      defaultValue: 0 // Initialize cartQuantity to 0
+      defaultValue: 0,
     },
-    gallery_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Gallery',
-        key: 'id',
-      },
-    },    
     incart: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
     },
   },
-
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "product",
+    modelName: 'product',
   }
 );
 

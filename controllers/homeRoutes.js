@@ -53,12 +53,22 @@ router.get("/gallery", async (req, res) => {
 router.get("/success", (req, res) => {
   res.render("success", {loggedIn: req.session.loggedIn });
 });
+router.get("/contact-success", (req, res) => {
+  res.render("contact-success", {loggedIn: req.session.loggedIn });
+});
 
-// Inside your router configuration
+// get for Products
 router.get("/menu", isAuthenticated, async (req, res) => {
   try {
-    // Fetch all products from the database
-    const products = await Product.findAll();
+    // Fetch all products from the database, including the associated Gallery filenames
+    const products = await Product.findAll({
+      include: [{
+        model: Gallery,
+        attributes: ['filename'], // Retrieve only the filename
+      }],
+    });
+     // Log the products to see the filenames received
+    //  console.log("Products with associated filenames:", products);
 
     // Render the 'menu' template and pass the products data
     res.render("menu", { loggedIn: req.session.loggedIn, products });
@@ -67,5 +77,11 @@ router.get("/menu", isAuthenticated, async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+// Route to display the pickup form
+router.get('/pickup', (req, res) => {
+  res.render('pickup', { loggedIn: req.session.loggedIn });
+});
+
 
 module.exports = router;

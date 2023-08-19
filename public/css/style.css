@@ -1,3 +1,13 @@
+/* body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+} */
+
+
+
+
 header {
   padding-top: 90px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -53,13 +63,15 @@ header nav ul li {
 .card {
     background-color:  #cbd0d2;
     margin: 0 0 20px 0;
-    /* border: 2px solid var(--dark); */
+    border: 3px solid var(--dark);
     border-radius: .4rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    /* padding: 10px;
-    margin: 10px; */
-    /* height: 200px; */
+    padding: 10px;
+    margin: 20px;
+    margin-left: 15px;
+    height: auto;
+    width: auto;
   }
   .card-title-container {
     display: flex;
@@ -84,10 +96,7 @@ header nav ul li {
     color: inherit;/* uses color the sentence is already using*/
   }
   
-  .image-reduced {
-    width: 20vw; /* 20% of the viewport width */
-    height: auto; /* Maintain aspect ratio */
-}
+  
 /* outline text */
 .strokeme {
   color: white;
@@ -108,11 +117,6 @@ header nav ul li {
 img {
   width: 100%;
   height: auto;
-}
-
-/* Add this CSS to your existing style.css or create a new CSS file */
-.spacer {
-  height: 30px; /* Adjust the height as needed */
 }
 
 /* Styles for the social links */
@@ -172,9 +176,43 @@ img {
   margin-bottom: 10px;
 }
 
+.single-product {
+  margin-top: 20px;
+}
+
 /* Customize form layout for smaller screens */
 @media screen and (max-width: 600px) {
   .login-form, .contact-form, .signup-form {
     padding: 10px; /* Reduce padding for smaller screens */
   }
 }
+
+.spacer {
+  height: 2px; /* Adjust the height as needed */
+}
+
+/* Add this CSS to vertically center the content in the main section */
+.vertical-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Add this CSS to horizontally center the content in the main section */
+.horizontal-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.slideshow-container {
+  position: relative;
+  margin: auto;
+  margin-top: 100px;
+  max-width: 500px;
+}
+

@@ -1,0 +1,16 @@
+<h1>Select Pickup Time</h1>
+<form id="pickup-form" method="POST" action="/pickup">
+  <input type="hidden" name="user_id" value="{{ user.id }}">
+  <label for="pickup_time">Select pickup time:</label>
+  <input type="time" name="pickup_time" id="pickup_time" required />
+  <br />
+  <label for="name">Name:</label>
+  <input type="text" name="name" id="name" required />
+  <br />
+  <label for="phone">Phone Number:</label>
+  <input type="tel" name="phone" id="phone" required />
+  <br />
+  <input type="submit" value="Confirm Pickup" />
+</form>
+
+<script src="/js/pickup.js"></script>

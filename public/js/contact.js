@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const feedbackMessage = document.getElementById('feedback-message');
+
     contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = new FormData(contactForm);
@@ -25,8 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-
-
-
 
