@@ -20,7 +20,7 @@ header h1 {
 header h1 .seo {
   color: #d9dcd6;
 }
-
+/* changing targetting for nav */
 header nav {
   padding-top: 15px;
   padding-left: 20px;
@@ -53,9 +53,13 @@ header nav ul li {
 .card {
     background-color:  #cbd0d2;
     margin: 0 0 20px 0;
+    /* border: 2px solid var(--dark); */
     border-radius: .4rem;
     border: 1px solid #ccc;
     border-radius: 8px;
+    /* padding: 10px;
+    margin: 10px; */
+    /* height: 200px; */
   }
   .card-title-container {
     display: flex;
@@ -75,16 +79,16 @@ header nav ul li {
   }
 
 
-
+  /*made hyperlinks not have the color blue*/
   a {
-    color: inherit;
+    color: inherit;/* uses color the sentence is already using*/
   }
   
   .image-reduced {
-    width: 20vw; 
-    height: auto; 
+    width: 20vw; /* 20% of the viewport width */
+    height: auto; /* Maintain aspect ratio */
 }
-
+/* outline text */
 .strokeme {
   color: white;
   background-color: white;
@@ -106,40 +110,40 @@ img {
   height: auto;
 }
 
-
+/* Add this CSS to your existing style.css or create a new CSS file */
 .spacer {
-  height: 30px; 
+  height: 30px; /* Adjust the height as needed */
 }
 
-
+/* Styles for the social links */
 .social-link {
   font-size: 24px;
   margin-right: 10px;
-  color: #000; 
+  color: #000; /* Set your desired link color */
   transition: color 0.3s ease;
 }
 
 .social-link:hover {
-  color: #007bff; 
+  color: #007bff; /* Set your desired hover color */
 }
 
 
 
-
+/* Custom styles for login form */
 .login-form, .contact-form {
-
+  /* Your custom styles here */
   width: auto;
   height: auto;
-  
+  /* Example responsive style */
   
 }
 
-
+/* Custom styles for sign-up form */
 .signup-form {
-  
+  /* Your custom styles here */
   width: auto;
   height: auto;
-  
+  /* Example responsive style */
   
 }
 #map {
@@ -148,16 +152,16 @@ img {
   margin: 0 auto;
 }
 
-
+/* Custom styles for login form */
 .login-form, .contact-form, .signup-form {
-  width: 100%; 
-  max-width: 500px; 
-  margin: 0 auto; 
-  padding: 20px; 
-  box-sizing: border-box; 
+  width: 100%; /* Make the form width 100% to adapt to different screen sizes */
+  max-width: 500px; /* Limit the maximum width for better readability */
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 20px; /* Add some padding to create separation from the edges */
+  box-sizing: border-box; /* Include padding and border in the total width */
 }
 
-
+/* Adjust form elements to fit within the form's width */
 .login-form input[type="text"],
 .login-form input[type="password"],
 .contact-form input[type="text"],
@@ -168,9 +172,9 @@ img {
   margin-bottom: 10px;
 }
 
-
-@media screen and (max-width: 400px) {
-  .login-form, .contact-form, .signup-form, .card, .product-list {
-    padding: 10px; 
+/* Customize form layout for smaller screens */
+@media screen and (max-width: 600px) {
+  .login-form, .contact-form, .signup-form {
+    padding: 10px; /* Reduce padding for smaller screens */
   }
 }
