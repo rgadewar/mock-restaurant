@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     const feedbackMessage = document.getElementById('feedback-message');
-  
+
     contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-  
       const formData = new FormData(contactForm);
-  
       try {
         const response = await fetch('/contact', {
           method: 'POST',
           body: formData,
         });
-  
         if (response.ok) {
           feedbackMessage.textContent = 'Thank you for contacting us!';
           feedbackMessage.style.color = 'green';
@@ -29,4 +26,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  
+

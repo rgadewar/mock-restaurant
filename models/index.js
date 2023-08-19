@@ -5,20 +5,19 @@ const CartProduct = require('./cartProduct');
 const Contact = require('./contact'); 
 const PickupTime = require('./pickupTime'); 
 
+
 // Define associations
 User.hasMany(CartProduct, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
-
 CartProduct.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-CartProduct.belongsTo(Product, {
-  foreignKey: 'product_id'
+Product.belongsTo(CartProduct, {
+  foreignKey: 'cartProduct_id'
 });
-
 Product.hasMany(CartProduct, {
   foreignKey: 'product_id',
   onDelete: 'CASCADE'
@@ -27,7 +26,6 @@ Product.hasMany(CartProduct, {
 Gallery.hasMany(Product, {
   foreignKey: 'gallery_id',
 });
-
 Product.belongsTo(Gallery, {
   foreignKey: 'gallery_id',
 });
@@ -37,6 +35,7 @@ User.hasMany(Contact, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
+
 
 Contact.belongsTo(User, {
   foreignKey: 'user_id'
@@ -52,3 +51,4 @@ PickupTime.belongsTo(User, {
 });
 
 module.exports = { User, Product, CartProduct, Gallery, Contact, PickupTime };
+
