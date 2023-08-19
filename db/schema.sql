@@ -1,2 +1,2 @@
-DROP DATABASE mock_restaurant;
+DROP DATABASE IF EXISTS mock_restaurant;
 CREATE DATABASE mock_restaurant;
