@@ -35,6 +35,9 @@ router.get("/contact", (req, res) => {
        apiKey: process.env.GOOGLE_MAPS_API_KEY, loggedIn: req.session.loggedIn
    });
 });
+router.get("/contact-success", (req, res) => {
+  res.render("contact-success", {loggedIn: req.session.loggedIn });
+});
 
 router.get("/gallery", async (req, res) => {
   try {
