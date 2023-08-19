@@ -75,4 +75,10 @@ router.get("/menu", isAuthenticated, async (req, res) => {
   }
 });
 
+// Route to display the pickup form
+router.get('/pickup', (req, res) => {
+  res.render('pickup', { loggedIn: req.session.loggedIn });
+});
+
+
 module.exports = router;

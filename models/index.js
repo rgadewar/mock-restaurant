@@ -2,7 +2,8 @@ const User = require('./User');
 const Product = require('./product');
 const Gallery = require('./Gallery');
 const CartProduct = require('./cartProduct');
-const Contact = require('./contact'); // Import the Contact model
+const Contact = require('./contact'); 
+const PickupTime = require('./pickupTime'); 
 
 // Define associations
 User.hasMany(CartProduct, {
@@ -41,4 +42,13 @@ Contact.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-module.exports = { User, Product, CartProduct, Gallery, Contact };
+User.hasOne(PickupTime, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE'
+});
+
+PickupTime.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+module.exports = { User, Product, CartProduct, Gallery, Contact, PickupTime };

@@ -8,7 +8,7 @@ const moment = require("moment");
 
 const sequelize = require('./config/connection');
 require('dotenv').config();
-// const seedDatabase = require('./seeds/seed'); // Import the seed function
+// const seedDatabase = require('./seeds/seedDatabase'); // Import the seed function
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -52,7 +52,7 @@ app.use(routes);
 
 
 // Force true to drop/recreate table(s) on every sync
-sequelize.sync({ force: false}).then(async () => {
+sequelize.sync({ force: false }).then(async () => {
   // Uncomment this line to run the seed files
   // await seedDatabase();
 
