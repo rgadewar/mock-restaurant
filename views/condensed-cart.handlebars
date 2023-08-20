@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="card contact-form">
+    <div class="card-body">
+      <h1>Condensed Cart</h1>
+      <div class="cart-items">
+        <ul>
+          {{#each cartItems}}
+            <li>{{productName}} - Quantity: {{quantity}} - Total: ${{total}}</li>
+          {{/each}}
+        </ul>
+        <div class="final-total">
+          <h4>Final Total: ${{finalTotal}}</h4>
+        </div>
+        <div class="review-order-link">
+          <a href="/pickup" class="btn btn-primary">Review Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

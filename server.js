@@ -24,15 +24,16 @@ app.engine(
       formatDate: function (date) {
         return moment(date).format("M/D/YYYY");
       },
+      json: function(context) {
+        return JSON.stringify(context);
+      }
     },
     runtimeOptions: {
       allowProtoPropertiesByDefault: true, // Enable the option
     },
     partialsDir: __dirname + "/views/partials" // Add this line
   })
-  
 );
-
 app.set("view engine", "handlebars");
 
 // Creating express app and configuring middleware needed for authentication

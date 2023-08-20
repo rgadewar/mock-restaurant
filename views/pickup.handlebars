@@ -1,16 +1,51 @@
-<h1>Select Pickup Time</h1>
-<form id="pickup-form" method="POST" action="/pickup">
-  <input type="hidden" name="user_id" value="{{ user.id }}">
-  <label for="pickup_time">Select pickup time:</label>
-  <input type="time" name="pickup_time" id="pickup_time" required />
-  <br />
-  <label for="name">Name:</label>
-  <input type="text" name="name" id="name" required />
-  <br />
-  <label for="phone">Phone Number:</label>
-  <input type="tel" name="phone" id="phone" required />
-  <br />
-  <input type="submit" value="Confirm Pickup" />
-</form>
-
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1>Select Pickup Time</h1>
+      <form id="pickup-form" method="POST" action="/pickup">
+       <input type="hidden" name="user_id" value="{{session.passport.user.id}}" />
+        <label for="pickup_time">Select pickup time:</label>
+        <select name="pickup_time" id="pickup_time" required>
+          {{#each timeIntervals}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+        <br />
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required />
+        <br />
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" id="phone" required />
+        <br />
+        <input type="submit" value="Confirm Pickup" />
+      </form>
+    </div>
+  </div>
+</div>
 <script src="/js/pickup.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pickupTimeSelect = document.querySelector('#pickup_time');
+    
+    // Generate time intervals with 15-minute duration
+    const timeIntervals = [];
+    const startTime = new Date(0, 0, 0, 11, 0); // Start time at 09:00 AM
+    const endTime = new Date(0, 0, 0, 19, 0); // End time at 05:00 PM
+    const intervalMinutes = 15;
+    let currentTime = new Date(startTime);
+
+    while (currentTime <= endTime) {
+      const formattedTime = currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      timeIntervals.push(formattedTime);
+      currentTime = new Date(currentTime.getTime() + intervalMinutes * 60000); // Convert minutes to milliseconds
+    }
+
+    // Populate the dropdown with time intervals
+    timeIntervals.forEach(interval => {
+      const option = document.createElement('option');
+      option.value = interval;
+      option.textContent = interval;
+      pickupTimeSelect.appendChild(option);
+    });
+  });
+</script>

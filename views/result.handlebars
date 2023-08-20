@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1>Pickup Confirmation</h1>
+      <p>{{session.successMessage}}</p>
+      <p id="chosen-time">You selected the pickup time: {{chosenTime}}</p>
+      
+      <!-- Add a section to display condensed cart data -->
+      <div id="condensed-cart-placeholder">
+        <!-- The condensed cart data will be displayed here -->
+      </div>
+      
+      <!-- Display cart summary -->
+      <div id="cart-summary">
+        <h2>Cart Summary</h2>
+        <ul>
+          {{#each cartItems}}
+            <li>{{productName}} - {{quantity}} x {{total}}</li>
+          {{/each}}
+        </ul>
+        <p><strong>Total: ${{finalTotal}}</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/result.js"></script> <!-- Make sure this script is at the end of the body -->
