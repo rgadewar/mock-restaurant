@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Product } = require('../../models')
+const { Product, Gallery } = require('../../models')
 const isAuthenticated = require("../../utils/auth"); // Require the middleware file
 
 router.get('/products', async (req, res) => {
@@ -40,5 +40,22 @@ router.get('/product/:id', isAuthenticated, async (req, res) => {
   });
 });
 
+// get for Products
+router.get("/order", isAuthenticated, async (req, res) => {
+  try {
+    // Fetch all products from the database, including the associated Gallery filenames
+    const products = await Product.findAll({
+      include: [{
+        model: Gallery,
+        attributes: ['filename'], // Retrieve only the filename
+      }],
+    });
+    // Render the 'menu' template and pass the products data
+    res.render("order", { loggedIn: req.session.loggedIn, products });
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 module.exports = router

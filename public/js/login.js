@@ -18,7 +18,7 @@ async function loginFormHandler(event) {
   
       if (response.ok) {
         // Handle successful login, e.g., redirect
-        document.location.replace('/menu');
+        document.location.replace('/order');
         // alert('Login successful');
       } else {
         alert(response.statusText);

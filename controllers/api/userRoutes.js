@@ -32,7 +32,7 @@ router.post("/login", (req, res, next) => {
 
       // Authentication successful and post created, redirect to the dashboard
       req.session.loggedIn = true;
-      res.redirect("/menu");
+      res.redirect("/order");
     });
   })(req, res, next);
 });

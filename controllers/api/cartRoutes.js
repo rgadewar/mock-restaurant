@@ -35,6 +35,7 @@ router.get("/cart", isAuthenticated, async (req, res) => {
 
     // Render the 'cart' template with the serialized cart data and final total
     res.render("cart", { cartItems: serializedCart, finalTotal: finalTotal.toFixed(2), loggedIn: req.session.loggedIn });
+    
 
   } catch (err) {
     console.error("Error fetching cart items:", err);
@@ -123,25 +124,6 @@ router.put("/update-cart", isAuthenticated, async (req, res) => {
       return res.status(404).json({ error: "Cart item not found" });
     }
 
-    // Fetch the associated product
-    // const product = await Product.findByPk(cartItem.product_id);
-
-    // if (!product) {
-    //   return res.status(404).json({ error: "Product not found" });
-    // }
-
-    // Update cart item quantity and recalculate total
-    // cartItem.quantity = quantity;
-    // const updatedTotal = cartItem.quantity * parseFloat(cartItem.price);
-    // cartItem.total = updatedTotal.toFixed(2);
-
-    // // Save the updated cart item
-    // await cartItem.save();
-
-    // Update the product's cartQuantity
-    // product.cartQuantity = quantity;
-    // await product.save();
-
     // Send a JSON response with success message
     res.status(200).json({ message: "Cart item quantity updated successfully" });
   } catch (error) {
@@ -175,6 +157,48 @@ router.delete("/delete-cart", isAuthenticated, async (req, res) => {
   }
 });
 
-module.exports = router;
+router.get('/cart/condensed', isAuthenticated, async (req, res) => {
+  try {
+    const Cart = await CartProduct.findAll({
+      where: { user_id: req.session.passport.user.id }
+    });
+    let finalTotal = 0; // Initialize final total
 
+    // Create an array to hold the condensed cart data
+    const condensedCart = [];
+
+    // Iterate through each cart item and find the associated product
+    for (const cartItem of Cart) {
+      const product = await Product.findByPk(cartItem.product_id);
+      if (product) {
+        const productTotal = cartItem.quantity * parseFloat(cartItem.price);
+        finalTotal += productTotal; // Accumulate product totals for final total
+
+        condensedCart.push({
+          productName: product.product_name,
+          quantity: cartItem.quantity,
+          total: productTotal.toFixed(2) // Individual product total
+        });
+      }
+    }
+
+    // Add the final total to the condensed cart data
+    condensedCart.push({
+      productName: 'Final Total',
+      quantity: '', // You can leave this empty or add an appropriate value
+      total: finalTotal.toFixed(2)
+    });
+
+    // Send the condensed cart data as JSON response
+    res.json(condensedCart);
+
+  } catch (err) {
+    console.error("Error fetching condensed cart data:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+
+module.exports = router;
 

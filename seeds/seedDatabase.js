@@ -7,6 +7,7 @@ const seedUsers = async () => {
 
   const hashedPassword1 = await bcrypt.hash("password1", 10);
   const hashedPassword2 = await bcrypt.hash("password2", 10);
+  const hashedPassword3 = await bcrypt.hash("test", 10);
 
   await User.bulkCreate([
     {
@@ -17,7 +18,10 @@ const seedUsers = async () => {
       email: "user2@example.com", // Use email instead of username
       password: hashedPassword2,
     },
-    // Add more users as needed
+    {
+      email: "test@gmail.com", // Use email instead of username
+      password: hashedPassword3,
+    },
   ]);
 
   console.log("Users seeded successfully");

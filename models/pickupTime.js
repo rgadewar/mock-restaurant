@@ -21,7 +21,17 @@ PickupTime.init(
     },
     time: {
       type: DataTypes.TIME,
-      allowNull: false
+      allowNull: false,
+      unique: 'user_time_unique', // Define a unique constraint
+      get() {
+        const rawValue = this.getDataValue('time');
+        if (rawValue) {
+          const formattedTime = new Date(`1970-01-01T${rawValue}Z`)
+            .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+          return formattedTime;
+        }
+        return null;
+      }
     }
   },
   {

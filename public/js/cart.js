@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+  
     const editButtons = document.querySelectorAll(".edit-btn");
     const deleteButtons = document.querySelectorAll(".delete-btn");
     let inputField;
-  
+
     editButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
         console.log("Edit Button Clicked");
