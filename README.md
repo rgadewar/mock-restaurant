@@ -2,12 +2,8 @@
   ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 <p align="center">
-  <img src="./public/images/cookiehero.png">
+  <img src="./public/images/mock-restaurant-build.gif">
 </p>
-
-## Click the button to watch our walkthrough video on YouTube!
-[![Watch the video](https://cdn-icons-png.flaticon.com/256/1384/1384060.png)](-)
-
 
   ## Table of Contents
   * [Description](#description)
@@ -19,7 +15,7 @@
 * [License](#license)
 
 ## Description
-The purpose of this project was to create a mock restaurant that was functional and responsive to a user, serving as a great start for a potential business to begin advertising online order services. The project utilizes Node.js and Express.js to create a RESTful API that uses GET and POST routes for retrieving data, Express and Sequelize through MySQL for database functionality, and Handlebars.js as a template engine where our project lives. The video linked in this README.md demonstrates how our project functions when running and includes instructions on potential changes that can be made to create your own functioning restaurant business.
+The purpose of this project was to create a functional and responsive framework for a restaurant website that would help developers get started with client criteria. The project contains many aspects that offline businesses would need to have to advertise an online presence, such as the ability for users to place online orders. For developers, this project is ideal for those who want to have the main functionality set and want to progress to future development of a fully-fledged site. The project utilizes Node.js and Express.js to create a RESTful API that uses GET and POST routes for retrieving data, Express and Sequelize through MySQL for database functionality, and Handlebars.js as a template engine where our project lives. The video linked in this README.md demonstrates how our project functions when running and includes instructions on potential changes that can be made to create your own functioning restaurant business.
 
 ## Requirements
     bcrypt: ^5.1.0
@@ -43,14 +39,14 @@ Click to download latest version of Insomnia:
 Node, Handlebars.js, JSON, JavaScript
 ## Contact-Info
 * Username: rgadewar (https://github.com/rgadewar/)
-* Email: -
+
 ## Contributors
 * Username: jakelipscomb (https://github.com/jakelipscomb/)
-* Email: jlipscombtx95@gmail.com
+
 * Username: RodolfoSL (https://github.com/RodolfoSL/)
-* Email: -
+
 * Username: khanadib21 (https://github.com/khanadib21/)
-* Email: -
+
 ## Testing
 
 To recreate this project, begin by cloning through:
@@ -77,7 +73,7 @@ Quit MySQL
 
 To import client-side information, input in command line:
 
-    node seeds/seed.js
+    node seeds/seedDatabase
 
 Run application with
 
@@ -87,4 +83,12 @@ Use Insomnia to run functionality tests.
 
 
 ## License
-      This Project is using the MIT license.
+    This Project is using the MIT license.
+
+    Copyright (c) 2023 Rupa
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
