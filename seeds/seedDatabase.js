@@ -203,6 +203,6 @@ const seedPickupTimes = async () => {
   await seedUsers();
   await seedGallery();
   await seedProducts();
-  await seedPickupTimes();
+  // await seedPickupTimes();
   
 })();
