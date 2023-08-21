@@ -30,15 +30,12 @@ router.get("/signup", (req, res) => {
 router.get("/about", (req, res) => {
   res.render("about", { loggedIn: req.session.loggedIn });
 });
+
 router.get("/contact", (req, res) => {
   res.render('contact', {
        apiKey: process.env.GOOGLE_MAPS_API_KEY, loggedIn: req.session.loggedIn
    });
 });
-router.get("/contact-success", (req, res) => {
-  res.render("contact-success", {loggedIn: req.session.loggedIn });
-});
-
 
 
 router.get("/success", (req, res) => {
