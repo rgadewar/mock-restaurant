@@ -81,6 +81,13 @@ Run application with
 
 Use Insomnia to run functionality tests.
 
+## Repository
+
+- [Project Repo](https://github.com/rgadewar/mock-restaurant/)
+
+## Heroku App
+
+- https://mock-restaurant-9eb3720005cf.herokuapp.com/
 
 ## License
     This Project is using the MIT license.
