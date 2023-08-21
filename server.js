@@ -10,7 +10,7 @@ const sequelize = require('./config/connection');
 require('dotenv').config();
 // const seedDatabase = require('./seeds/seedDatabase'); // Import the seed function
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 
 // Set up Handlebars as the template engine
