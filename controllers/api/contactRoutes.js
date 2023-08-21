@@ -13,11 +13,22 @@ router.post('/contact', async (req, res) => {
       message,
     });
     // Redirect or render a success page
-    res.redirect('/contact-success'); // Change this to the desired redirect or success page
+    res.redirect('/api/contact-success'); // Change this to the desired redirect or success page
   } catch (error) {
     console.error(error);
     // Handle the error, redirect, or render an error page
     res.redirect('/error'); // Change this to the desired error page
   }
 });
+
+router.get("/contact", (req, res) => {
+  res.render('contact', {
+       apiKey: process.env.GOOGLE_MAPS_API_KEY, loggedIn: req.session.loggedIn
+   });
+});
+
+router.get("/contact-success", (req, res) => {
+  res.render("contact-success", {loggedIn: req.session.loggedIn });
+});
+
 module.exports = router;

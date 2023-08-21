@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Fetch condensed cart data and update cart summary
   try {
-    const condensedCartResponse = await fetch('/cart/condensed'); // Corrected URL
+    const condensedCartResponse = await fetch('/api/cart/condensed'); // Corrected URL
     if (condensedCartResponse.ok) {
       const condensedCartData = await condensedCartResponse.json();
       displayCartSummary(condensedCartData); // Use displayCartSummary for condensed cart data

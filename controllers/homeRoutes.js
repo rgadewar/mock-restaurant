@@ -22,7 +22,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// GET route to render the signup page
 router.get("/signup", (req, res) => {
   res.render("signup", { loggedIn: req.session.loggedIn });
 });
@@ -31,21 +30,14 @@ router.get("/about", (req, res) => {
   res.render("about", { loggedIn: req.session.loggedIn });
 });
 
-router.get("/contact", (req, res) => {
-  res.render('contact', {
-       apiKey: process.env.GOOGLE_MAPS_API_KEY, loggedIn: req.session.loggedIn
-   });
-});
-
 
 router.get("/success", (req, res) => {
   res.render("success", {loggedIn: req.session.loggedIn });
 });
-router.get("/contact-success", (req, res) => {
-  res.render("contact-success", {loggedIn: req.session.loggedIn });
+
+// Generic error handling middleware
+router.use((err, req, res, next) => {
+  console.error(err.stack); // Log the error to the console
+  res.status(500).render('error', { errorMessage: 'Something went wrong.' });
 });
-
-
-
-
 module.exports = router;

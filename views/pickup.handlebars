@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h1>Select Pickup Time</h1>
-      <form id="pickup-form" method="POST" action="/pickup">
+      <form id="pickup-form" method="POST" action="/api/pickup">
        <input type="hidden" name="user_id" value="{{session.passport.user.id}}" />
         <label for="pickup_time">Select pickup time:</label>
         <select name="pickup_time" id="pickup_time" required>

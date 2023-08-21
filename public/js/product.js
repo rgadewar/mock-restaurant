@@ -30,7 +30,7 @@ addToCartForm.addEventListener('submit', event => {
   if (!isNaN(quantity) && quantity > 0) {
     // Send product ID, quantity, and price to the server to add to cart
     const price = parseFloat(product.price); // Parse price as a float
-    fetch('/add-to-cart', {
+    fetch('/api/add-to-cart', {
       method: 'POST',
       body: JSON.stringify({ product_id: productID, quantity }),
       headers: {
