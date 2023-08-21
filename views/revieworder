@@ -1,5 +1,5 @@
 <h1>Choose Pickup Day and Time</h1>
-    <form method="POST" action="/pickup">
+    <form method="POST" action="/api/pickup">
         <label for="pickup_day">Select a pickup day:</label>
         <select name="pickup_day" id="pickup_day">
             <option value="Monday">Monday</option>

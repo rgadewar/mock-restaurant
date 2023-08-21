@@ -17,7 +17,10 @@ PickupTime.init(
     },
     phone: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        is: /^(\d{3}-\d{3}-\d{4})$|^\d{10}$/ // Regular expression to validate either 10-digit or XXX-XXX-XXXX format phone number
+      }
     },
     time: {
       type: DataTypes.TIME,

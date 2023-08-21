@@ -5,7 +5,7 @@ async function loginFormHandler(event) {
     const password = document.querySelector('#password-login').value;
   
     if (email && password) {
-      const response = await fetch('/users/login', {
+      const response = await fetch('/api/users/login', {
         method: 'POST',
         body: JSON.stringify({
           email,
@@ -18,7 +18,7 @@ async function loginFormHandler(event) {
   
       if (response.ok) {
         // Handle successful login, e.g., redirect
-        document.location.replace('/order');
+        document.location.replace('/api/order');
         // alert('Login successful');
       } else {
         alert(response.statusText);
