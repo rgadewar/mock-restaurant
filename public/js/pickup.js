@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
       phone: pickupForm.phone.value
     };
 
-    const phoneErrorElement = document.querySelector('#phone-error');
+    // const phoneErrorElement = document.querySelector('#phone-error');
     
     try {
       const response = await fetch('/api/pickup', {
@@ -27,27 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const { successMessage, chosenTime } = jsonResponse;
 
         // Display the response or perform further actions
-        console.log(successMessage, chosenTime);
+        // console.log(successMessage, chosenTime);
 
         // Redirect to the result page after processing form data
         window.location.href = `/api/pickup/result?chosenTime=${chosenTime}`;
-      } else {
-        const errorResponse = await response.json();
-        if (errorResponse.errors) {
-          // Display validation error messages on the UI
-          errorResponse.errors.forEach((errorMessage, index) => {
-            if (index === 0) {
-              // Display the first validation error next to the corresponding field
-              phoneErrorElement.textContent = errorMessage;
-            }
-            // You can add similar code for other fields if needed
-          });
-        } else {
-          console.error('An error occurred:', response.statusText);
-        }
-      }
+      } 
     } catch (error) {
       console.error('An error occurred:', error);
+      // if (error) {
+      //   // Display validation error messages on the UI
+      //   errorResponse.errors.forEach((errorMessage, index) => {
+      //     if (index === 0) {
+      //       // Display the first validation error next to the corresponding field
+      //       phoneErrorElement.textContent = errorMessage;
+      //     }
+      //     // You can add similar code for other fields if needed
+      //   });
+      // } else {
+      //   console.error('An error occurred:', response.statusText);
+      // }
     }
   });
 });
