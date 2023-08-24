@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log(successMessage, chosenTime);
 
         // Redirect to the result page after processing form data
-        window.location.href = `/api/pickup/result?chosenTime=${chosenTime}`;
+        window.location.replace(`/api/pickup/result?chosenTime=${chosenTime}`) ;
       } 
     } catch (error) {
       console.error('An error occurred:', error);
