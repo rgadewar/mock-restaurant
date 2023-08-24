@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // const phoneErrorElement = document.querySelector('#phone-error');
     
     try {
-      const response = await fetch('/api/pickup', {
+        await fetch('/api/pickup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -23,16 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(formData)
       });
 
-      if (response.ok) {
-        const jsonResponse = await response.json();
-        const { successMessage, chosenTime } = jsonResponse;
+      // if (response.ok) {
+        // const jsonResponse = await response.json();
+        // const { successMessage, chosenTime } = jsonResponse;
 
         // Display the response or perform further actions
         // console.log(successMessage, chosenTime);
 
         // Redirect to the result page after processing form data
-        window.location.replace(`/api/pickup/result?chosenTime=${chosenTime}`) ;
-      } 
+        window.location.replace(`/api/pickup/result?chosenTime=${pickupForm.pickup_time.value}`) ;
+      // } 
     } catch (error) {
       console.error('An error occurred:', error);
       // if (error) {
