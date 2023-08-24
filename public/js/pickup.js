@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   pickupForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    console.log("pickupForm.pickup_time.value", pickupForm.pickup_time.value);
 
     const formData = {
       user_id: pickupForm.user_id.value,
